@@ -23,10 +23,8 @@ public class TesteRequest {
 		HttpClient client = HttpClient.newBuilder().build();
 		
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-//		System.out.println(response.body());
 		
 		JSONObject json = new JSONObject(response.body());
-//		System.out.println(json.toString(1));
 		
 		JSONArray itemsArray = json.getJSONArray("items");
 		
@@ -48,8 +46,17 @@ public class TesteRequest {
 			imDbRatingCounts.add(itemsArray.getJSONObject(i).getString("imDbRatingCount"));
 		}
 		
-		for(String str: crews) {
-			System.out.println(str);
+		List<Movie> movies = new ArrayList<>();
+		
+		for(int i = 0; i < itemsArray.length(); i++) {
+			Movie movie = new Movie();
+			movie.setTitle(titles.get(i));
+			movie.setImage(urlImages.get(i));
+			movie.setRating(Double.parseDouble(imDbRatings.get(i)));
+			movie.setYear(Integer.parseInt(years.get(i)));
+			movies.add(movie);
 		}
+		
+		movies.forEach(System.out::println);
 	}
 }
