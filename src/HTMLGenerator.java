@@ -28,10 +28,12 @@ public class HTMLGenerator {
 					+ "    <img class=\"card-img-top\" src=\"" + movie.getImage() + "\" alt=\"Card image cap\">\r\n"
 					+ "    <div class=\"card-body\">\r\n"
 					+ "      <h5 class=\"card-title\">" + movie.getTitle() + "</h5>\r\n"
+					+ "    </div>\r\n"
+					+ "    <div class=\"card-body\">\r\n"
 					+ "      <p class=\"card-text\">Ano: " + movie.getYear() + "</p>\r\n"
 					+ "    </div>\r\n"
-					+ "    <div class=\"card-footer\">\r\n"
-					+ "      <small class=\"text-muted\">Nota: " + movie.getRating() + "</small>\r\n"
+					+ "    <div class=\"card-body\">\r\n"
+					+ "      <p class=\"card-text\">Nota: " + movie.getRating() + "</p>\r\n"
 					+ "    </div>\r\n"
 					+ "  </div>\r\n");
 		}
