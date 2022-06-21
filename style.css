@@ -1,0 +1,10 @@
+body{
+	background-color: #778899;
+	font-family: Tahoma, sans-serif;
+}
+
+h1{
+	color: #FFFFF0;
+	display: flex;
+	justify-content: center;
+}

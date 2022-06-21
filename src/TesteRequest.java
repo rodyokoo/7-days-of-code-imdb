@@ -57,6 +57,8 @@ public class TesteRequest {
 			movies.add(movie);
 		}
 		
-		movies.forEach(System.out::println);
+//		movies.forEach(System.out::println);
+		HTMLGenerator html = new HTMLGenerator(movies);
+
 	}
 }
