@@ -16,7 +16,7 @@ h1{
 }
 .card{
 	flex: 1 0 10%;
-	width: 200px;
+	max-width: 200px;
 	background-color: #424342;
 	color: white;
 }

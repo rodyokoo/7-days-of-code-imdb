@@ -13,20 +13,10 @@ import org.json.JSONObject;
 public class TesteRequest {
 
 	public static void main(String[] args) throws IOException, InterruptedException{
-
-		HttpRequest request = HttpRequest
-				.newBuilder()
-				.GET()
-				.uri(URI.create("https://imdb-api.com/en/API/Top250Movies/k_o1yvy4b8"))
-				.build();
 		
-		HttpClient client = HttpClient.newBuilder().build();
+		APIConsumerTop250 api = new APIConsumerTop250("k_o1yvy4b8");
 		
-		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		
-		JSONObject json = new JSONObject(response.body());
-		
-		JSONArray itemsArray = json.getJSONArray("items");
+		ToJSON itemsArray = new ToJSON(api);
 		
 		List<String> titles = new ArrayList<>();
 		List<String> fullTitles = new ArrayList<>();
@@ -36,19 +26,19 @@ public class TesteRequest {
 		List<String> imDbRatings = new ArrayList<>();
 		List<String> imDbRatingCounts = new ArrayList<>();
 		
-		for(int i = 0; i < itemsArray.length(); i++) {
-			titles.add(itemsArray.getJSONObject(i).getString("title"));
-			fullTitles.add(itemsArray.getJSONObject(i).getString("fullTitle"));
-			urlImages.add(itemsArray.getJSONObject(i).getString("image"));
-			years.add(itemsArray.getJSONObject(i).getString("year"));
-			crews.add(itemsArray.getJSONObject(i).getString("crew"));
-			imDbRatings.add(itemsArray.getJSONObject(i).getString("imDbRating"));
-			imDbRatingCounts.add(itemsArray.getJSONObject(i).getString("imDbRatingCount"));
+		for(int i = 0; i < itemsArray.getItemsArray().length(); i++) {
+			titles.add(itemsArray.getItemsArray().getJSONObject(i).getString("title"));
+			fullTitles.add(itemsArray.getItemsArray().getJSONObject(i).getString("fullTitle"));
+			urlImages.add(itemsArray.getItemsArray().getJSONObject(i).getString("image"));
+			years.add(itemsArray.getItemsArray().getJSONObject(i).getString("year"));
+			crews.add(itemsArray.getItemsArray().getJSONObject(i).getString("crew"));
+			imDbRatings.add(itemsArray.getItemsArray().getJSONObject(i).getString("imDbRating"));
+			imDbRatingCounts.add(itemsArray.getItemsArray().getJSONObject(i).getString("imDbRatingCount"));
 		}
 		
 		List<Movie> movies = new ArrayList<>();
 		
-		for(int i = 0; i < itemsArray.length(); i++) {
+		for(int i = 0; i < itemsArray.getItemsArray().length(); i++) {
 			Movie movie = new Movie();
 			movie.setTitle(titles.get(i));
 			movie.setImage(urlImages.get(i));
@@ -58,7 +48,8 @@ public class TesteRequest {
 		}
 		
 //		movies.forEach(System.out::println);
-		HTMLGenerator html = new HTMLGenerator(movies);
+		HTMLGenerator html = new HTMLGenerator();
+		html.insertList(movies);
 
 	}
 }

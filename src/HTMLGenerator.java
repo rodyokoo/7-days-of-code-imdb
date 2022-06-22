@@ -7,8 +7,13 @@ import java.util.List;
 public class HTMLGenerator {
 
 	private static File file; 
-	public HTMLGenerator(List<Movie> movies){
+	
+	public HTMLGenerator(){
 		file = new File("index.html");
+		
+	}
+	
+	public void insertList(List<Movie> movies) {
 		StringBuilder html = new StringBuilder();
 		html.append("<!doctype html>\r\n"
 				+ "<html lang=\"en\">\r\n"
