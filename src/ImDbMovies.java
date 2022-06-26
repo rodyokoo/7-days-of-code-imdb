@@ -1,22 +1,15 @@
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+public class ImDbMovies {
+	
+	private List<Movie> movies;
 
-public class TesteRequest {
-
-	public static void main(String[] args) throws IOException, InterruptedException{
-		
-		APIConsumerTop250 api = new APIConsumerTop250("k_o1yvy4b8");
-		
-		ToJSON itemsArray = new ToJSON(api);
+	public List<Movie> getMovies() {
+		return movies;
+	}
+	
+	public ImDbMovies(ToJSON itemsArray) {
 		
 		List<String> titles = new ArrayList<>();
 		List<String> fullTitles = new ArrayList<>();
@@ -36,7 +29,7 @@ public class TesteRequest {
 			imDbRatingCounts.add(itemsArray.getItemsArray().getJSONObject(i).getString("imDbRatingCount"));
 		}
 		
-		List<Movie> movies = new ArrayList<>();
+		this.movies = new ArrayList<>();
 		
 		for(int i = 0; i < itemsArray.getItemsArray().length(); i++) {
 			Movie movie = new Movie();
@@ -44,12 +37,8 @@ public class TesteRequest {
 			movie.setImage(urlImages.get(i));
 			movie.setRating(Double.parseDouble(imDbRatings.get(i)));
 			movie.setYear(Integer.parseInt(years.get(i)));
-			movies.add(movie);
+			this.movies.add(movie);
 		}
-		
-//		movies.forEach(System.out::println);
-		HTMLGenerator html = new HTMLGenerator();
-		html.insertList(movies);
-
 	}
+	
 }
