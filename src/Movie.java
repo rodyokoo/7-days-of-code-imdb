@@ -1,5 +1,5 @@
 
-public class Movie {
+public class Movie implements Content{
 	
 	private String title;
 	private String image;
@@ -33,6 +33,26 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Title: " + title + ", \nImage: " + image + ", \nRating: " + rating + ", \nYear: " + year + "\n";
+	}
+	@Override
+	public String title() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String image() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public double rating() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int year() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

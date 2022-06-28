@@ -18,7 +18,7 @@ public class Main {
 		
 		ToJSON itemsArray = new ToJSON(api);
 
-		List<Movie> movieList = new ImDbMovies(itemsArray).getMovies();
+		List<Movie> movieList = new JSONToList(itemsArray).getMovies();
 		
 		HTMLGenerator html = new HTMLGenerator();
 		

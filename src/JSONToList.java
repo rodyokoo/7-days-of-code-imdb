@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImDbMovies {
+public class JSONToList implements GenericList{
 	
 	private List<Movie> movies;
 
@@ -9,7 +9,7 @@ public class ImDbMovies {
 		return movies;
 	}
 	
-	public ImDbMovies(ToJSON itemsArray) {
+	public JSONToList(ToJSON itemsArray) {
 		
 		List<String> titles = new ArrayList<>();
 		List<String> fullTitles = new ArrayList<>();
@@ -39,6 +39,12 @@ public class ImDbMovies {
 			movie.setYear(Integer.parseInt(years.get(i)));
 			this.movies.add(movie);
 		}
+	}
+
+	@Override
+	public List<? extends Content> genericList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
