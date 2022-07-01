@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONToList implements GenericList{
+public class JSONToList{
 	
 	private List<Movie> movies;
 
@@ -41,10 +41,4 @@ public class JSONToList implements GenericList{
 		}
 	}
 
-	@Override
-	public List<? extends Content> genericList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

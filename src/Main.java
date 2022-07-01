@@ -1,14 +1,7 @@
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Main {
 
@@ -20,9 +13,17 @@ public class Main {
 
 		List<Movie> movieList = new JSONToList(itemsArray).getMovies();
 		
+
+		Collections.sort(movieList, new Comparator<Movie>() {
+			public int compare(Movie movie1, Movie movie2) {
+				return Double.compare(movie1.getRating(), movie2.getRating());
+			}
+		});
+		
 		HTMLGenerator html = new HTMLGenerator();
 		
 		html.insertList(movieList);
 
 	}
+
 }

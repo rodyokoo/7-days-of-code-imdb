@@ -15,7 +15,7 @@ public class HTMLGenerator {
 	
 	public void insertList(List<Movie> movies) {
 		StringBuilder html = new StringBuilder();
-		int rank = 0;
+//		int rank = 0;
 		html.append("<!doctype html>\r\n"
 				+ "<html lang=\"en\">\r\n"
 				+ "  <head>\r\n"
@@ -30,7 +30,7 @@ public class HTMLGenerator {
 				+ "    		<h1>Top 250 ImDb Movies</h1>\r\n");
 		html.append("<div class=\"card-deck\">\r\n");
 		for(Movie movie : movies) {
-			rank++;
+//			rank++;
 			html.append("  <div class=\"card\">\r\n"
 					+ "    <img class=\"card-img-top\" src=\"" + movie.getImage() + "\" alt=\"Card image cap\">\r\n"
 					+ "    <div class=\"card-body\">\r\n"
@@ -42,9 +42,9 @@ public class HTMLGenerator {
 					+ "    <div class=\"card-body\">\r\n"
 					+ "      <p class=\"card-text\">Nota: " + movie.getRating() + "</p>\r\n"
 					+ "    </div>\r\n"
-					+ "    <div class=\"card-body\">\r\n"
-					+ "      <p class=\"card-text\">Rank: " + rank + "</p>\r\n"
-					+ "    </div>\r\n"
+//					+ "    <div class=\"card-body\">\r\n"
+//					+ "      <p class=\"card-text\">Rank: " + rank + "</p>\r\n"
+//					+ "    </div>\r\n"
 					+ "  </div>\r\n");
 		}
 		html.append("</div>\r\n");

@@ -53,7 +53,6 @@ public class Movie implements Content{
 	public int year() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
+	}	
 	
 }
